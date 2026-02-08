@@ -1,0 +1,146 @@
+.orders-page {
+    min-height: calc(100vh - 80px);
+    padding: var(--spacing-xl) 0;
+}
+
+.empty-orders {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.empty-orders-icon {
+    font-size: 5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.empty-orders h2 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.empty-orders p {
+    color: var(--text-secondary);
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.order-card {
+    transition: var(--transition);
+}
+
+.order-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.order-header h3 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.order-date {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.badge-error {
+    background: var(--primary);
+    color: white;
+}
+
+.order-items {
+    margin-bottom: var(--spacing-md);
+}
+
+.order-item-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+}
+
+.item-name {
+    flex: 1;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.item-quantity {
+    color: var(--text-secondary);
+    min-width: 50px;
+}
+
+.item-price {
+    color: var(--primary);
+    font-weight: 600;
+    min-width: 80px;
+    text-align: right;
+}
+
+.order-footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+}
+
+.order-details p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.order-details strong {
+    color: var(--text-primary);
+}
+
+.order-total {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.order-total span:first-child {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .order-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .order-total {
+        text-align: left;
+    }
+
+    .order-item-row {
+        flex-wrap: wrap;
+    }
+}
