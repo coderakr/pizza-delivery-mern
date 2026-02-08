@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import PizzaCard from '../components/PizzaCard';
 import './Home.css';
 
@@ -14,7 +14,7 @@ const Home = () => {
 
     const fetchPizzas = async () => {
         try {
-            const { data } = await axios.get('/api/pizzas');
+            const { data } = await api.get('/api/pizzas');
             setPizzas(data);
         } catch (err) {
             setError('Failed to load pizzas. Please try again later.');

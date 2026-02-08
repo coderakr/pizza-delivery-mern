@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 import './Checkout.css';
@@ -54,7 +54,7 @@ const Checkout = () => {
                 }
             };
 
-            const { data } = await axios.post('/api/orders', orderData, config);
+            const { data } = await api.post('/api/orders', orderData, config);
 
             clearCart();
             navigate(`/orders`);

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 import './Orders.css';
 
@@ -21,7 +21,7 @@ const Orders = () => {
                 }
             };
 
-            const { data } = await axios.get('/api/orders', config);
+            const { data } = await api.get('/api/orders', config);
             setOrders(data);
         } catch (err) {
             setError('Failed to load orders. Please try again later.');
