@@ -19,24 +19,29 @@ connectDB().then(() => {
 const app = express();
 
 // CORS configuration for development and production
-const allowedOrigins = [
-    'http://localhost:3000',
-    process.env.FRONTEND_URL // Add your Render frontend URL here
-].filter(Boolean);
-
-app.use(cors({
+const corsOptions = {
     origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
+        // Allow requests with no origin (like mobile apps, Postman, or curl)
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) !== -1) {
+        // In production, allow all origins (or specify your frontend URL)
+        // You can also set FRONTEND_URL environment variable on Render
+        const allowedOrigins = [
+            'http://localhost:3000',
+            'https://pizza-delivery-mern-frontend.onrender.com',
+            process.env.FRONTEND_URL
+        ].filter(Boolean);
+
+        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'production') {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
         }
     },
     credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
